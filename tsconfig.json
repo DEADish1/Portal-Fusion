@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "commonjs",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "jsx": "preserve",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@crossbridge/shared": ["packages/shared/src"],
+      "@crossbridge/protocol": ["packages/protocol/src"],
+      "@crossbridge/security": ["packages/security/src"],
+      "@crossbridge/native-bridge": ["packages/native-bridge/src"],
+      "@crossbridge/ui": ["packages/ui/src"]
+    }
+  },
+  "exclude": ["node_modules", "dist", "build", ".next", "out"]
+}
