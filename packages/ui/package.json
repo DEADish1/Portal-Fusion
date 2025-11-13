@@ -5,7 +5,8 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run build:css",
+    "build:css": "postcss src/globals.css -o dist/globals.css",
     "dev": "tsc --watch",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
@@ -20,7 +21,14 @@
   "devDependencies": {
     "@types/node": "^20.10.0",
     "@types/react": "^18.2.45",
-    "typescript": "^5.3.0"
+    "typescript": "^5.3.0",
+    "tailwindcss": "^3.3.6",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "postcss-preset-env": "^9.3.0",
+    "@tailwindcss/typography": "^0.5.10",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/container-queries": "^0.1.1"
   },
   "peerDependencies": {
     "react": "^18.0.0",

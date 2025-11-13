@@ -1,0 +1,451 @@
+/* Portal Fusion Global Styles */
+
+/* ============================================
+   Brand Colors - CSS Custom Properties
+   ============================================ */
+:root {
+  /* Primary Brand Colors */
+  --pf-blue: #2563EB;
+  --pf-purple: #8B5CF6;
+  --pf-indigo: #6366F1;
+  
+  /* Gradients */
+  --pf-gradient: linear-gradient(135deg, #2563EB 0%, #6366F1 50%, #8B5CF6 100%);
+  --pf-gradient-horizontal: linear-gradient(90deg, #2563EB 0%, #8B5CF6 100%);
+  --pf-gradient-vertical: linear-gradient(180deg, #2563EB 0%, #8B5CF6 100%);
+  --pf-gradient-radial: radial-gradient(circle, #6366F1 0%, #2563EB 50%, #8B5CF6 100%);
+  --pf-gradient-subtle: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(99, 102, 241, 0.1) 50%, rgba(139, 92, 246, 0.1) 100%);
+  
+  /* Text Colors */
+  --pf-text-primary: #1F2937;
+  --pf-text-secondary: #6B7280;
+  --pf-text-tertiary: #9CA3AF;
+  --pf-text-inverse: #FFFFFF;
+  
+  /* Background Colors */
+  --pf-bg-primary: #FFFFFF;
+  --pf-bg-secondary: #F9FAFB;
+  --pf-bg-tertiary: #F3F4F6;
+  --pf-bg-overlay: rgba(0, 0, 0, 0.5);
+  
+  /* UI Colors */
+  --pf-border: #E5E7EB;
+  --pf-border-hover: #D1D5DB;
+  --pf-divider: #F3F4F6;
+  --pf-shadow: rgba(0, 0, 0, 0.1);
+  
+  /* Status Colors */
+  --pf-success: #10B981;
+  --pf-warning: #F59E0B;
+  --pf-error: #EF4444;
+  --pf-info: #3B82F6;
+  
+  /* Platform Specific */
+  --pf-pc-primary: #2563EB;
+  --pf-pc-light: #60A5FA;
+  --pf-pc-dark: #1E40AF;
+  --pf-mac-primary: #8B5CF6;
+  --pf-mac-light: #A78BFA;
+  --pf-mac-dark: #7C3AED;
+  
+  /* Spacing */
+  --pf-spacing-xs: 0.25rem;
+  --pf-spacing-sm: 0.5rem;
+  --pf-spacing-md: 1rem;
+  --pf-spacing-lg: 1.5rem;
+  --pf-spacing-xl: 2rem;
+  --pf-spacing-2xl: 3rem;
+  
+  /* Border Radius */
+  --pf-radius-sm: 4px;
+  --pf-radius-base: 8px;
+  --pf-radius-md: 12px;
+  --pf-radius-lg: 16px;
+  --pf-radius-xl: 24px;
+  --pf-radius-full: 9999px;
+  
+  /* Transitions */
+  --pf-transition-fast: 150ms ease-in-out;
+  --pf-transition-base: 200ms ease-in-out;
+  --pf-transition-slow: 400ms ease-in-out;
+  
+  /* Shadows */
+  --pf-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --pf-shadow-base: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --pf-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --pf-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --pf-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+  --pf-text-primary: #F9FAFB;
+  --pf-text-secondary: #9CA3AF;
+  --pf-text-tertiary: #6B7280;
+  --pf-text-inverse: #1F2937;
+  
+  --pf-bg-primary: #111827;
+  --pf-bg-secondary: #1F2937;
+  --pf-bg-tertiary: #374151;
+  --pf-bg-overlay: rgba(0, 0, 0, 0.7);
+  
+  --pf-border: #374151;
+  --pf-border-hover: #4B5563;
+  --pf-divider: #1F2937;
+  --pf-shadow: rgba(0, 0, 0, 0.3);
+  
+  --pf-pc-primary: #3B82F6;
+  --pf-mac-primary: #9333EA;
+  --pf-indigo: #6D28D9;
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+/* Logo Animation */
+@keyframes portal-merge {
+  0% { 
+    transform: translateX(-20px); 
+    opacity: 0.7; 
+  }
+  50% { 
+    transform: translateX(0); 
+    opacity: 0.9; 
+  }
+  100% { 
+    transform: translateX(0); 
+    opacity: 1; 
+  }
+}
+
+/* Portal Rotation */
+@keyframes portal-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pulse Animation */
+@keyframes portal-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Gradient Shift */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Connection Animation */
+@keyframes connection-flow {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Ripple Effect */
+@keyframes ripple {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+
+/* Logo Classes */
+.portal-fusion-logo {
+  background: var(--pf-gradient);
+  animation: portal-merge 2s ease-in-out;
+}
+
+.portal-fusion-logo-animated {
+  background: var(--pf-gradient);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* Portal Ring Animations */
+.portal-ring-outer {
+  animation: portal-rotate 20s linear infinite;
+}
+
+.portal-ring-inner {
+  animation: portal-rotate 15s linear infinite reverse;
+}
+
+.portal-pulse {
+  animation: portal-pulse 2s ease-in-out infinite;
+}
+
+/* Connection Indicator */
+.connection-indicator {
+  position: relative;
+  overflow: hidden;
+}
+
+.connection-indicator::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--pf-indigo), transparent);
+  animation: connection-flow 2s linear infinite;
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: var(--pf-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-horizontal {
+  background: var(--pf-gradient-horizontal);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient Backgrounds */
+.gradient-bg {
+  background: var(--pf-gradient);
+}
+
+.gradient-bg-subtle {
+  background: var(--pf-gradient-subtle);
+}
+
+.gradient-border {
+  position: relative;
+  background: var(--pf-bg-primary);
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: var(--pf-gradient);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  border-radius: inherit;
+}
+
+/* Platform Indicators */
+.platform-pc {
+  color: var(--pf-pc-primary);
+  border-color: var(--pf-pc-primary);
+}
+
+.platform-mac {
+  color: var(--pf-mac-primary);
+  border-color: var(--pf-mac-primary);
+}
+
+.platform-fusion {
+  background: var(--pf-gradient);
+  color: var(--pf-text-inverse);
+}
+
+/* Status Indicators */
+.status-connected {
+  color: var(--pf-success);
+}
+
+.status-syncing {
+  color: var(--pf-warning);
+  animation: portal-pulse 1.5s ease-in-out infinite;
+}
+
+.status-disconnected {
+  color: var(--pf-error);
+}
+
+/* Button Styles */
+.btn-portal {
+  background: var(--pf-gradient);
+  color: var(--pf-text-inverse);
+  border: none;
+  padding: var(--pf-spacing-sm) var(--pf-spacing-lg);
+  border-radius: var(--pf-radius-base);
+  font-weight: 600;
+  transition: all var(--pf-transition-base);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-portal:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pf-shadow-lg);
+}
+
+.btn-portal:active {
+  transform: translateY(0);
+}
+
+.btn-portal::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-portal:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Card Effects */
+.card-portal {
+  background: var(--pf-bg-primary);
+  border: 1px solid var(--pf-border);
+  border-radius: var(--pf-radius-md);
+  padding: var(--pf-spacing-lg);
+  transition: all var(--pf-transition-base);
+}
+
+.card-portal:hover {
+  border-color: var(--pf-indigo);
+  box-shadow: 0 0 0 3px var(--pf-gradient-subtle);
+}
+
+/* Loading Animation */
+.portal-loading {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--pf-border);
+  border-top-color: var(--pf-blue);
+  border-right-color: var(--pf-indigo);
+  border-bottom-color: var(--pf-purple);
+  border-radius: 50%;
+  animation: portal-rotate 1s linear infinite;
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--pf-text-primary);
+  background-color: var(--pf-bg-primary);
+}
+
+body {
+  min-height: 100vh;
+  transition: background-color var(--pf-transition-base), color var(--pf-transition-base);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: var(--pf-spacing-md);
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.25rem; }
+h3 { font-size: 1.875rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1.125rem; }
+
+p {
+  margin-bottom: var(--pf-spacing-md);
+  color: var(--pf-text-secondary);
+}
+
+a {
+  color: var(--pf-indigo);
+  text-decoration: none;
+  transition: color var(--pf-transition-fast);
+}
+
+a:hover {
+  color: var(--pf-purple);
+}
+
+/* Code */
+code {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Consolas', 'Courier New', monospace;
+  font-size: 0.875em;
+  padding: 0.125rem 0.25rem;
+  background: var(--pf-bg-tertiary);
+  border-radius: var(--pf-radius-sm);
+}
+
+/* Selection */
+::selection {
+  background: var(--pf-gradient-subtle);
+  color: var(--pf-indigo);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--pf-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--pf-gradient);
+  border-radius: var(--pf-radius-full);
+  border: 2px solid var(--pf-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--pf-gradient-horizontal);
+}
