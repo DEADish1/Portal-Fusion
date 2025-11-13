@@ -168,15 +168,15 @@ Portal Fusion implements multiple layers of security:
 - ✅ Implement elevated permission handling
 - ✅ Create update mechanism
 
-### Phase 4: Basic Features 📋
-- [ ] Clipboard sync (text)
-- [ ] Clipboard sync (images)
-- [ ] Clipboard sync (files)
-- [ ] File transfer (drag & drop)
-- [ ] File transfer (selection dialog)
-- [ ] Notification mirroring
-- [ ] URL/link sharing
-- [ ] Screenshot capture and share
+### Phase 4: Basic Features ✅
+- ✅ Clipboard sync (text)
+- ✅ Clipboard sync (images)
+- ✅ Clipboard sync (files)
+- ✅ File transfer (drag & drop)
+- ✅ File transfer (selection dialog)
+- ✅ Notification mirroring
+- ✅ URL/link sharing
+- ✅ Screenshot capture and share
 
 ### Phase 5: Advanced Features 📋
 - [ ] Universal keyboard/mouse (KVM)
