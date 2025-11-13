@@ -1,0 +1,61 @@
+<!-- portal-fusion-icon-hd.svg -->
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <!-- High-res version with shadows and gradients -->
+  <defs>
+    <!-- Main Gradient -->
+    <linearGradient id="fusion-hd" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2563EB;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#6366F1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- PC Gradient -->
+    <linearGradient id="pc-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Mac Gradient -->
+    <linearGradient id="mac-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#A78BFA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Shadow Filter -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feFlood flood-color="#000000" flood-opacity="0.15"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Glow Effect -->
+    <filter id="glow-hd">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background Circle (subtle) -->
+  <circle cx="128" cy="128" r="120" fill="url(#fusion-hd)" opacity="0.05"/>
+  
+  <!-- PC Rectangle with Shadow -->
+  <rect x="32" y="64" width="128" height="128" rx="24" fill="url(#pc-grad)" opacity="0.9" filter="url(#shadow)"/>
+  
+  <!-- Mac Rectangle with Shadow -->
+  <rect x="96" y="64" width="128" height="128" rx="24" fill="url(#mac-grad)" opacity="0.9" filter="url(#shadow)"/>
+  
+  <!-- Fusion Area with Glow -->
+  <rect x="96" y="64" width="64" height="128" rx="24" fill="url(#fusion-hd)" filter="url(#glow-hd)"/>
+  
+  <!-- Highlight Effects -->
+  <rect x="32" y="64" width="128" height="2" rx="1" fill="white" opacity="0.3"/>
+  <rect x="96" y="64" width="128" height="2" rx="1" fill="white" opacity="0.3"/>
+</svg>

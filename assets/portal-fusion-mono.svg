@@ -1,0 +1,10 @@
+<!-- portal-fusion-mono.svg -->
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Monochrome version using different opacities -->
+  <!-- PC Rectangle -->
+  <rect x="8" y="16" width="32" height="32" rx="6" fill="currentColor" opacity="0.4"/>
+  <!-- Mac Rectangle -->
+  <rect x="24" y="16" width="32" height="32" rx="6" fill="currentColor" opacity="0.4"/>
+  <!-- Fusion Area (overlap gets double opacity) -->
+  <rect x="24" y="16" width="16" height="32" rx="6" fill="currentColor" opacity="0.6"/>
+</svg>

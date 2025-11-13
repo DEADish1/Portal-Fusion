@@ -1,0 +1,50 @@
+<!-- portal-fusion-spinner.svg -->
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Loading Spinner Version -->
+  <defs>
+    <linearGradient id="spinner-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2563EB;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#6366F1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Rotating Container -->
+  <g transform-origin="32 32">
+    <animateTransform
+      attributeName="transform"
+      type="rotate"
+      from="0 32 32"
+      to="360 32 32"
+      dur="3s"
+      repeatCount="indefinite"/>
+    
+    <!-- PC Rectangle -->
+    <rect x="8" y="16" width="32" height="32" rx="6" fill="#2563EB" opacity="0.9">
+      <animate 
+        attributeName="opacity" 
+        values="0.4;0.9;0.4" 
+        dur="1.5s" 
+        repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Mac Rectangle -->
+    <rect x="24" y="16" width="32" height="32" rx="6" fill="#8B5CF6" opacity="0.9">
+      <animate 
+        attributeName="opacity" 
+        values="0.4;0.9;0.4" 
+        dur="1.5s" 
+        begin="0.75s"
+        repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Fusion Area -->
+    <rect x="24" y="16" width="16" height="32" rx="6" fill="url(#spinner-grad)">
+      <animate 
+        attributeName="opacity" 
+        values="1;0.5;1" 
+        dur="1.5s" 
+        repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>

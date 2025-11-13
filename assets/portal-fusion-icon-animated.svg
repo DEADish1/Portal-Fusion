@@ -1,0 +1,57 @@
+<!-- portal-fusion-icon-animated.svg -->
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient Definitions -->
+  <defs>
+    <linearGradient id="fusion-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2563EB;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#6366F1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Glow Filter -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- PC Rectangle with Animation -->
+  <rect x="8" y="16" width="32" height="32" rx="6" fill="#2563EB" opacity="0.9">
+    <animate 
+      attributeName="x" 
+      values="8;10;8" 
+      dur="3s" 
+      repeatCount="indefinite"/>
+    <animate 
+      attributeName="opacity" 
+      values="0.9;1;0.9" 
+      dur="3s" 
+      repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Mac Rectangle with Animation -->
+  <rect x="24" y="16" width="32" height="32" rx="6" fill="#8B5CF6" opacity="0.9">
+    <animate 
+      attributeName="x" 
+      values="24;22;24" 
+      dur="3s" 
+      repeatCount="indefinite"/>
+    <animate 
+      attributeName="opacity" 
+      values="0.9;1;0.9" 
+      dur="3s" 
+      repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Fusion Area with Pulse -->
+  <rect x="24" y="16" width="16" height="32" rx="6" fill="url(#fusion-gradient)" filter="url(#glow)">
+    <animate 
+      attributeName="opacity" 
+      values="1;0.8;1" 
+      dur="2s" 
+      repeatCount="indefinite"/>
+  </rect>
+</svg>

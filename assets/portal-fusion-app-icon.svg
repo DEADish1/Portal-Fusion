@@ -1,0 +1,79 @@
+<!-- portal-fusion-app-icon.svg -->
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <!-- App Icon Version - High Resolution -->
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F0F4FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F5F3FF;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Main Fusion Gradient -->
+    <linearGradient id="app-fusion" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2563EB;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#6366F1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- PC Gradient with Depth -->
+    <linearGradient id="app-pc" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60A5FA;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2563EB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E40AF;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Mac Gradient with Depth -->
+    <linearGradient id="app-mac" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C4B5FD;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Inner Shadow -->
+    <filter id="inner-shadow">
+      <feOffset dx="0" dy="-20"/>
+      <feGaussianBlur stdDeviation="20"/>
+      <feComposite operator="out" in="SourceGraphic"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+    </filter>
+    
+    <!-- Drop Shadow -->
+    <filter id="drop-shadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="20"/>
+      <feOffset dx="0" dy="20" result="offsetblur"/>
+      <feFlood flood-color="#000000" flood-opacity="0.2"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1024" height="1024" fill="url(#bg-gradient)"/>
+  
+  <!-- Main Icon Container -->
+  <g transform="translate(512, 512)">
+    <!-- PC Rectangle -->
+    <rect x="-320" y="-200" width="400" height="400" rx="60" fill="url(#app-pc)" filter="url(#drop-shadow)"/>
+    
+    <!-- Mac Rectangle -->
+    <rect x="-80" y="-200" width="400" height="400" rx="60" fill="url(#app-mac)" filter="url(#drop-shadow)"/>
+    
+    <!-- Fusion Area -->
+    <rect x="-80" y="-200" width="160" height="400" rx="60" fill="url(#app-fusion)"/>
+    
+    <!-- Highlights for depth -->
+    <rect x="-320" y="-200" width="400" height="4" rx="2" fill="white" opacity="0.4"/>
+    <rect x="-80" y="-200" width="400" height="4" rx="2" fill="white" opacity="0.4"/>
+    
+    <!-- Subtle inner glow on fusion area -->
+    <rect x="-80" y="-200" width="160" height="400" rx="60" fill="white" opacity="0.1"/>
+  </g>
+  
+  <!-- iOS Mask (rounded corners for iOS app icon) -->
+  <mask id="ios-mask">
+    <rect width="1024" height="1024" rx="227" fill="white"/>
+  </mask>
+</svg>
