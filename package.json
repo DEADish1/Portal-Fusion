@@ -1,8 +1,36 @@
 {
   "name": "portal-fusion",
   "version": "1.0.0",
-  "description": "Seamless computing, unified - Cross-platform bridge for PC and Mac",
+  "displayName": "Portal Fusion",
+  "description": "Seamless computing, unified - Cross-platform PC to Mac application",
   "private": true,
+  "homepage": "https://portalfusion.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/portal-fusion.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/portal-fusion/issues"
+  },
+  "author": {
+    "name": "Your Name",
+    "email": "contact@portalfusion.app",
+    "url": "https://portalfusion.app"
+  },
+  "license": "MIT",
+  "keywords": [
+    "portal-fusion",
+    "cross-platform",
+    "pc-to-mac",
+    "file-transfer",
+    "clipboard-sync", 
+    "screen-share",
+    "remote-control",
+    "unified-workspace",
+    "device-bridge",
+    "seamless-computing",
+    "productivity"
+  ],
   "workspaces": [
     "apps/*",
     "packages/*"

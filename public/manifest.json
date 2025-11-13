@@ -1,0 +1,153 @@
+{
+  "name": "Portal Fusion",
+  "short_name": "Portal Fusion",
+  "description": "Seamless computing, unified - Cross-platform PC to Mac application",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#6366F1",
+  "background_color": "#FFFFFF",
+  "categories": ["productivity", "utilities"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "scope": "/",
+  "id": "com.portalfusion.app",
+  "icons": [
+    {
+      "src": "/assets/portal-fusion-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/screenshots/desktop-home.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "label": "Portal Fusion Desktop Home"
+    },
+    {
+      "src": "/assets/screenshots/connection.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "label": "Device Connection"
+    },
+    {
+      "src": "/assets/screenshots/file-transfer.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "label": "File Transfer in Progress"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Connect Devices",
+      "short_name": "Connect",
+      "description": "Connect to nearby devices",
+      "url": "/connect",
+      "icons": [
+        {
+          "src": "/assets/icons/connect-96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "File Transfer",
+      "short_name": "Transfer",
+      "description": "Transfer files between devices",
+      "url": "/transfer",
+      "icons": [
+        {
+          "src": "/assets/icons/transfer-96.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "portalfusion",
+      "url": "/protocol?url=%s"
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "files",
+          "accept": ["*/*"]
+        }
+      ]
+    }
+  },
+  "related_applications": [
+    {
+      "platform": "windows",
+      "url": "ms-windows-store://pdp/?productid=portal-fusion",
+      "id": "com.portalfusion.windows"
+    },
+    {
+      "platform": "mac",
+      "url": "https://apps.apple.com/app/portal-fusion",
+      "id": "com.portalfusion.mac"
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
+}

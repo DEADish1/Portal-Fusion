@@ -1,0 +1,186 @@
+{
+  "name": "portal-fusion",
+  "productName": "Portal Fusion",
+  "displayName": "Portal Fusion",
+  "version": "1.0.0",
+  "description": "Seamless computing, unified - Cross-platform PC to Mac application",
+  "main": "main.js",
+  "author": {
+    "name": "Your Name",
+    "email": "contact@portalfusion.app",
+    "url": "https://portalfusion.app"
+  },
+  "homepage": "https://portalfusion.app",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux",
+    "dist": "electron-builder --publish=always",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "com.portalfusion.app",
+    "productName": "Portal Fusion",
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+    "copyright": "Copyright © 2024 Portal Fusion",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*",
+      "assets/**/*",
+      "!**/*.ts",
+      "!**/*.map"
+    ],
+    "protocols": [
+      {
+        "name": "Portal Fusion Protocol",
+        "schemes": ["portalfusion"]
+      }
+    ],
+    "mac": {
+      "appId": "com.portalfusion.mac",
+      "category": "public.app-category.productivity",
+      "icon": "assets/icons/icon.icns",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "darkModeSupport": true,
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        },
+        {
+          "target": "zip",
+          "arch": ["x64", "arm64"]
+        }
+      ],
+      "bundleVersion": "100",
+      "minimumSystemVersion": "10.15.0",
+      "extendInfo": {
+        "NSCameraUsageDescription": "Portal Fusion needs camera access for video sharing between devices.",
+        "NSMicrophoneUsageDescription": "Portal Fusion needs microphone access for audio sharing between devices.",
+        "NSScreenCaptureDescription": "Portal Fusion needs screen recording permission to share your screen with connected devices."
+      }
+    },
+    "win": {
+      "appId": "com.portalfusion.windows",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64", "ia32", "arm64"]
+        },
+        {
+          "target": "msi",
+          "arch": ["x64"]
+        },
+        {
+          "target": "appx",
+          "arch": ["x64", "arm64"]
+        }
+      ],
+      "icon": "assets/icons/icon.ico",
+      "publisherName": "Portal Fusion",
+      "certificateSubjectName": "Portal Fusion",
+      "legalTrademarks": "Portal Fusion",
+      "requestedExecutionLevel": "asInvoker",
+      "signDlls": true
+    },
+    "linux": {
+      "appId": "com.portalfusion.linux",
+      "category": "Utility;Network",
+      "target": [
+        "AppImage",
+        "snap",
+        "deb",
+        "rpm"
+      ],
+      "icon": "assets/icons",
+      "maintainer": "Portal Fusion Team",
+      "vendor": "Portal Fusion",
+      "synopsis": "Cross-platform PC to Mac bridge",
+      "desktop": {
+        "Name": "Portal Fusion",
+        "Comment": "Seamless computing, unified",
+        "Categories": "Utility;Network;FileTransfer",
+        "StartupWMClass": "portal-fusion"
+      }
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": true,
+      "menuCategory": true,
+      "shortcutName": "Portal Fusion",
+      "uninstallDisplayName": "Portal Fusion",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "dmg": {
+      "backgroundColor": "#FFFFFF",
+      "window": {
+        "width": 540,
+        "height": 380
+      },
+      "contents": [
+        {
+          "x": 130,
+          "y": 220,
+          "type": "file"
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "appx": {
+      "applicationId": "PortalFusion",
+      "identityName": "PortalFusion",
+      "publisherDisplayName": "Portal Fusion Team",
+      "backgroundColor": "#6366F1",
+      "showNameOnTiles": true,
+      "languages": ["en-US"]
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "yourusername",
+        "repo": "portal-fusion",
+        "releaseType": "release"
+      }
+    ],
+    "afterSign": "scripts/notarize.js"
+  },
+  "dependencies": {
+    "electron-updater": "^6.1.7",
+    "electron-store": "^8.1.0",
+    "electron-log": "^5.0.3"
+  },
+  "devDependencies": {
+    "electron": "^27.0.0",
+    "electron-builder": "^24.9.1",
+    "electron-notarize": "^1.2.2",
+    "@electron/rebuild": "^3.4.0"
+  },
+  "keywords": [
+    "portal-fusion",
+    "cross-platform",
+    "pc-to-mac",
+    "file-transfer",
+    "clipboard-sync",
+    "screen-share",
+    "electron-app"
+  ]
+}

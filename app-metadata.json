@@ -1,0 +1,76 @@
+{
+  "name": "Portal Fusion",
+  "displayName": "Portal Fusion",
+  "description": "Seamless computing, unified - Cross-platform PC to Mac application",
+  "version": "1.0.0",
+  "author": "Your Name",
+  "homepage": "https://portalfusion.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/portal-fusion"
+  },
+  "brandColors": {
+    "primary": "#2563EB",
+    "secondary": "#8B5CF6", 
+    "accent": "#6366F1",
+    "gradient": "linear-gradient(135deg, #2563EB 0%, #6366F1 50%, #8B5CF6 100%)"
+  },
+  "platforms": {
+    "pc": {
+      "name": "Windows",
+      "color": "#2563EB",
+      "minVersion": "Windows 10",
+      "architecture": ["x64", "arm64"]
+    },
+    "mac": {
+      "name": "macOS",
+      "color": "#8B5CF6",
+      "minVersion": "10.15",
+      "architecture": ["x64", "arm64"]
+    }
+  },
+  "features": {
+    "clipboardSync": true,
+    "fileTransfer": true,
+    "screenShare": true,
+    "remoteControl": true,
+    "notifications": true,
+    "audioRouting": true,
+    "cameraShare": true,
+    "browserSync": true,
+    "encryption": "AES-256-GCM",
+    "protocol": "WebRTC"
+  },
+  "requirements": {
+    "node": ">=18.0.0",
+    "npm": ">=10.0.0",
+    "electron": ">=27.0.0"
+  },
+  "links": {
+    "website": "https://portalfusion.app",
+    "documentation": "https://docs.portalfusion.app",
+    "support": "https://support.portalfusion.app",
+    "github": "https://github.com/yourusername/portal-fusion",
+    "discord": "https://discord.gg/portalfusion",
+    "twitter": "https://twitter.com/portalfusion"
+  },
+  "legal": {
+    "license": "MIT",
+    "copyright": "Copyright © 2024 Portal Fusion",
+    "privacyPolicy": "https://portalfusion.app/privacy",
+    "termsOfService": "https://portalfusion.app/terms"
+  },
+  "tagline": "Seamless computing, unified",
+  "keywords": [
+    "cross-platform",
+    "pc-to-mac",
+    "file-transfer",
+    "clipboard-sync",
+    "screen-share",
+    "remote-control",
+    "unified-workspace",
+    "device-bridge",
+    "seamless-computing",
+    "productivity"
+  ]
+}

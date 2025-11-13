@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package 
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+  IgnorableNamespaces="uap mp uap3 desktop">
+
+  <Identity 
+    Name="PortalFusion"
+    Publisher="CN=Portal Fusion, O=Portal Fusion, L=San Francisco, S=California, C=US"
+    Version="1.0.0.0"
+    ProcessorArchitecture="x64" />
+
+  <Properties>
+    <DisplayName>Portal Fusion</DisplayName>
+    <PublisherDisplayName>Portal Fusion Team</PublisherDisplayName>
+    <Description>Seamless computing, unified - Cross-platform PC to Mac application</Description>
+    <Logo>assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.19041.0" MaxVersionTested="10.0.22621.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="en-US" />
+  </Resources>
+
+  <Applications>
+    <Application Id="App" Executable="Portal Fusion.exe" EntryPoint="Windows.FullTrustApplication">
+      <uap:VisualElements
+        DisplayName="Portal Fusion"
+        Description="Seamless computing, unified"
+        BackgroundColor="#6366F1"
+        Square150x150Logo="assets\Square150x150Logo.png"
+        Square44x44Logo="assets\Square44x44Logo.png">
+        
+        <uap:DefaultTile 
+          Wide310x150Logo="assets\Wide310x150Logo.png"
+          Square310x310Logo="assets\LargeTile.png"
+          Square71x71Logo="assets\SmallTile.png"
+          ShortName="Portal Fusion">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo"/>
+            <uap:ShowOn Tile="wide310x150Logo"/>
+            <uap:ShowOn Tile="square310x310Logo"/>
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+        
+        <uap:SplashScreen Image="assets\SplashScreen.png" BackgroundColor="#FFFFFF" />
+        
+        <uap:LockScreen BadgeLogo="assets\BadgeLogo.png" Notification="badge"/>
+      </uap:VisualElements>
+
+      <Extensions>
+        <!-- Protocol Handler -->
+        <uap:Extension Category="windows.protocol">
+          <uap:Protocol Name="portalfusion">
+            <uap:DisplayName>Portal Fusion Protocol</uap:DisplayName>
+          </uap:Protocol>
+        </uap:Extension>
+
+        <!-- File Type Association -->
+        <uap:Extension Category="windows.fileTypeAssociation">
+          <uap:FileTypeAssociation Name="portalfusion">
+            <uap:SupportedFileTypes>
+              <uap:FileType>.pfs</uap:FileType>
+            </uap:SupportedFileTypes>
+            <uap:DisplayName>Portal Fusion Session</uap:DisplayName>
+            <uap:Logo>assets\FileIcon.png</uap:Logo>
+          </uap:FileTypeAssociation>
+        </uap:Extension>
+
+        <!-- Share Target -->
+        <uap:Extension Category="windows.shareTarget">
+          <uap:ShareTarget>
+            <uap:SupportedFileTypes>
+              <uap:SupportsAnyFileType />
+            </uap:SupportedFileTypes>
+            <uap:DataFormat>Text</uap:DataFormat>
+            <uap:DataFormat>URI</uap:DataFormat>
+            <uap:DataFormat>Bitmap</uap:DataFormat>
+            <uap:DataFormat>StorageItems</uap:DataFormat>
+          </uap:ShareTarget>
+        </uap:Extension>
+
+        <!-- Background Task -->
+        <Extension Category="windows.backgroundTasks" EntryPoint="PortalFusion.BackgroundTask">
+          <BackgroundTasks>
+            <Task Type="timer" />
+            <Task Type="systemEvent" />
+          </BackgroundTasks>
+        </Extension>
+
+        <!-- App Service -->
+        <uap3:Extension Category="windows.appService">
+          <uap3:AppService Name="com.portalfusion.bridge" />
+        </uap3:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <Capability Name="internetClientServer" />
+    <Capability Name="privateNetworkClientServer" />
+    <uap:Capability Name="documentsLibrary" />
+    <uap:Capability Name="picturesLibrary" />
+    <uap:Capability Name="videosLibrary" />
+    <uap:Capability Name="musicLibrary" />
+    <uap:Capability Name="removableStorage" />
+    <DeviceCapability Name="microphone" />
+    <DeviceCapability Name="webcam" />
+    <DeviceCapability Name="bluetooth" />
+    <desktop:Capability Name="runFullTrust" />
+  </Capabilities>
+</Package>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <!-- Application Information -->
+  <key>CFBundleDisplayName</key>
+  <string>Portal Fusion</string>
+  
+  <key>CFBundleName</key>
+  <string>Portal Fusion</string>
+  
+  <key>CFBundleIdentifier</key>
+  <string>com.portalfusion.mac</string>
+  
+  <key>CFBundleVersion</key>
+  <string>1.0.0</string>
+  
+  <key>CFBundleShortVersionString</key>
+  <string>1.0.0</string>
+  
+  <key>CFBundleExecutable</key>
+  <string>Portal Fusion</string>
+  
+  <key>CFBundlePackageType</key>
+  <string>APPL</string>
+  
+  <key>CFBundleSignature</key>
+  <string>PFUS</string>
+  
+  <key>CFBundleIconFile</key>
+  <string>icon.icns</string>
+  
+  <!-- Document Types -->
+  <key>CFBundleDocumentTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleTypeName</key>
+      <string>Portal Fusion Session</string>
+      <key>CFBundleTypeExtensions</key>
+      <array>
+        <string>pfs</string>
+      </array>
+      <key>CFBundleTypeIconFile</key>
+      <string>DocumentIcon.icns</string>
+      <key>CFBundleTypeRole</key>
+      <string>Editor</string>
+      <key>LSHandlerRank</key>
+      <string>Owner</string>
+    </dict>
+  </array>
+  
+  <!-- URL Types (Protocol Handler) -->
+  <key>CFBundleURLTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleURLName</key>
+      <string>Portal Fusion Protocol</string>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>portalfusion</string>
+      </array>
+    </dict>
+  </array>
+  
+  <!-- Human-readable copyright -->
+  <key>NSHumanReadableCopyright</key>
+  <string>Copyright © 2024 Portal Fusion. All rights reserved.</string>
+  
+  <!-- Application Category -->
+  <key>LSApplicationCategoryType</key>
+  <string>public.app-category.productivity</string>
+  
+  <!-- Minimum System Version -->
+  <key>LSMinimumSystemVersion</key>
+  <string>10.15.0</string>
+  
+  <!-- High Resolution Capable -->
+  <key>NSHighResolutionCapable</key>
+  <true/>
+  
+  <!-- Supports Automatic Graphics Switching -->
+  <key>NSSupportsAutomaticGraphicsSwitching</key>
+  <true/>
+  
+  <!-- Dark Mode Support -->
+  <key>NSRequiresAquaSystemAppearance</key>
+  <false/>
+  
+  <!-- Privacy - Usage Descriptions -->
+  <key>NSCameraUsageDescription</key>
+  <string>Portal Fusion needs camera access to share video between your connected devices.</string>
+  
+  <key>NSMicrophoneUsageDescription</key>
+  <string>Portal Fusion needs microphone access to share audio between your connected devices.</string>
+  
+  <key>NSScreenCaptureDescription</key>
+  <string>Portal Fusion needs screen recording permission to share your screen with connected devices.</string>
+  
+  <key>NSBluetoothAlwaysUsageDescription</key>
+  <string>Portal Fusion uses Bluetooth to discover and connect to nearby devices.</string>
+  
+  <key>NSLocalNetworkUsageDescription</key>
+  <string>Portal Fusion needs local network access to discover and connect to devices on your network.</string>
+  
+  <key>NSBonjourServices</key>
+  <array>
+    <string>_portalfusion._tcp</string>
+    <string>_portalfusion._udp</string>
+  </array>
+  
+  <key>NSAppleEventsUsageDescription</key>
+  <string>Portal Fusion needs to communicate with other applications for enhanced functionality.</string>
+  
+  <!-- File Access Permissions -->
+  <key>NSDocumentsFolderUsageDescription</key>
+  <string>Portal Fusion needs access to your Documents folder to transfer files between devices.</string>
+  
+  <key>NSDownloadsFolderUsageDescription</key>
+  <string>Portal Fusion needs access to your Downloads folder to save received files.</string>
+  
+  <key>NSDesktopFolderUsageDescription</key>
+  <string>Portal Fusion needs access to your Desktop to transfer files between devices.</string>
+  
+  <!-- Background Modes -->
+  <key>LSBackgroundOnly</key>
+  <false/>
+  
+  <key>LSUIElement</key>
+  <false/>
+  
+  <!-- Hardened Runtime -->
+  <key>com.apple.security.cs.allow-jit</key>
+  <true/>
+  
+  <key>com.apple.security.cs.allow-unsigned-executable-memory</key>
+  <true/>
+  
+  <key>com.apple.security.cs.disable-library-validation</key>
+  <true/>
+  
+  <key>com.apple.security.device.audio-input</key>
+  <true/>
+  
+  <key>com.apple.security.device.bluetooth</key>
+  <true/>
+  
+  <key>com.apple.security.device.camera</key>
+  <true/>
+  
+  <key>com.apple.security.files.downloads.read-write</key>
+  <true/>
+  
+  <key>com.apple.security.files.user-selected.read-write</key>
+  <true/>
+  
+  <key>com.apple.security.network.client</key>
+  <true/>
+  
+  <key>com.apple.security.network.server</key>
+  <true/>
+  
+  <!-- App Transport Security -->
+  <key>NSAppTransportSecurity</key>
+  <dict>
+    <key>NSAllowsLocalNetworking</key>
+    <true/>
+    <key>NSAllowsArbitraryLoadsInWebContent</key>
+    <true/>
+  </dict>
+  
+  <!-- Main Storyboard (if using) -->
+  <key>NSMainNibFile</key>
+  <string>MainMenu</string>
+  
+  <!-- Principal Class -->
+  <key>NSPrincipalClass</key>
+  <string>NSApplication</string>
+  
+  <!-- Supported Platforms -->
+  <key>LSArchitecturePriority</key>
+  <array>
+    <string>arm64</string>
+    <string>x86_64</string>
+  </array>
+  
+  <!-- Bundle Development Region -->
+  <key>CFBundleDevelopmentRegion</key>
+  <string>en</string>
+  
+  <!-- Supported Languages -->
+  <key>CFBundleLocalizations</key>
+  <array>
+    <string>en</string>
+  </array>
+</dict>
+</plist>
