@@ -15,3 +15,6 @@ export * from './connection';
 
 // Export event bus
 export * from './eventbus';
+
+// Export feature services
+export * from './features';

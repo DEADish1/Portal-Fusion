@@ -10,6 +10,7 @@ import { NotificationManager } from './notifications';
 import { PermissionManager } from './permissions';
 import { IPCBridge } from './ipc-bridge';
 import { NativeBridge } from './native-bridge';
+import { FeaturesManager } from './features-manager';
 
 // Configure logging
 log.transports.file.level = 'info';
@@ -43,6 +44,7 @@ class PortalFusionApp {
   private permissionManager: PermissionManager | null = null;
   private ipcBridge: IPCBridge | null = null;
   private nativeBridge: NativeBridge | null = null;
+  private featuresManager: FeaturesManager | null = null;
   private isQuitting = false;
 
   constructor() {
@@ -115,6 +117,13 @@ class PortalFusionApp {
         this.notificationManager,
         this.permissionManager
       );
+
+      // Initialize features manager
+      this.featuresManager = new FeaturesManager(
+        this.mainWindow!,
+        this.nativeBridge
+      );
+      await this.featuresManager.initialize();
 
       // Check for updates
       this.setupAutoUpdater();
@@ -363,6 +372,7 @@ class PortalFusionApp {
     this.trayManager?.destroy();
     this.ipcBridge?.destroy();
     this.nativeBridge?.destroy();
+    this.featuresManager?.destroy();
 
     app.quit();
   }
