@@ -68,6 +68,10 @@ module.exports = {
         'slide-in': 'slide-in 0.3s ease-out',
         'fade-in': 'fade-in 0.5s ease-out',
         'bounce-subtle': 'bounce-subtle 2s infinite',
+        'morph-left': 'morph-left 3s ease-in-out infinite',
+        'morph-right': 'morph-right 3s ease-in-out infinite',
+        'connect': 'connect 0.6s ease-in-out forwards',
+        'disconnect': 'disconnect 0.6s ease-in-out forwards',
       },
       keyframes: {
         'portal-merge': {
@@ -135,6 +139,23 @@ module.exports = {
         'bounce-subtle': {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-5px)' }
+        },
+        'morph-left': {
+          '0%, 100%': { transform: 'translateX(0) scale(1)' },
+          '50%': { transform: 'translateX(10%) scale(1.1)' }
+        },
+        'morph-right': {
+          '0%, 100%': { transform: 'translateX(0) scale(1)' },
+          '50%': { transform: 'translateX(-10%) scale(1.1)' }
+        },
+        'connect': {
+          '0%': { left: '0' },
+          '50%': { left: '20px' },
+          '100%': { left: '20px' }
+        },
+        'disconnect': {
+          '0%': { left: '20px' },
+          '100%': { left: '0' }
         }
       },
       boxShadow: {

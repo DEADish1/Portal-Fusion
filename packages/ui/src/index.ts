@@ -10,6 +10,7 @@ import './globals.css';
 
 // Export all Portal Fusion components
 export * from './components/PortalFusionComponents';
+export * from './components/PortalFusionLogo';
 
 // Re-export specific components for easier access
 export {
@@ -25,6 +26,13 @@ export {
   FeatureCard,
   PortalFusionDemo,
 } from './components/PortalFusionComponents';
+
+export {
+  PortalFusionLogo,
+  PortalFusionLogoSimple,
+  PortalFusionLogoAnimated,
+  PortalFusionLogoConnecting,
+} from './components/PortalFusionLogo';
 
 // Export CSS class name utilities for use with clsx/classnames
 export const pfClasses = {

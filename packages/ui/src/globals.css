@@ -179,6 +179,57 @@
   }
 }
 
+/* Morph Animations for Logo */
+@keyframes morph-left {
+  0%, 100% { 
+    transform: translateX(0) scale(1); 
+  }
+  50% { 
+    transform: translateX(10%) scale(1.1); 
+  }
+}
+
+@keyframes morph-right {
+  0%, 100% { 
+    transform: translateX(0) scale(1); 
+  }
+  50% { 
+    transform: translateX(-10%) scale(1.1); 
+  }
+}
+
+/* Connection Animations */
+@keyframes connect {
+  0% { 
+    left: 0; 
+  }
+  50% { 
+    left: 20px; 
+  }
+  100% { 
+    left: 20px; 
+  }
+}
+
+@keyframes disconnect {
+  0% { 
+    left: 20px; 
+  }
+  100% { 
+    left: 0; 
+  }
+}
+
+/* Fade In Animation */
+@keyframes fade-in {
+  0% { 
+    opacity: 0; 
+  }
+  100% { 
+    opacity: 1; 
+  }
+}
+
 /* ============================================
    Utility Classes
    ============================================ */
