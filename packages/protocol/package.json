@@ -12,8 +12,8 @@
     "lint": "eslint src/**/*.ts"
   },
   "dependencies": {
-    "@portal-fusion/shared": "workspace:*",
-    "@portal-fusion/security": "workspace:*",
+    "@portal-fusion/shared": "*",
+    "@portal-fusion/security": "*",
     "bonjour-service": "^1.2.1",
     "simple-peer": "^9.11.1",
     "ws": "^8.16.0",
