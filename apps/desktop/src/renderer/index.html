@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-eval';">
+  <title>Portal Fusion</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .titlebar {
+      -webkit-app-region: drag;
+      height: 32px;
+      background: rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .main-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      background: white;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      font-weight: 700;
+      color: #667eea;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      margin-bottom: 32px;
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .subtitle {
+      font-size: 20px;
+      opacity: 0.9;
+      margin-bottom: 48px;
+    }
+
+    .status {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 20px 32px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .status-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 12px #10b981;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .devices {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 24px;
+      border-radius: 12px;
+      min-width: 400px;
+    }
+
+    .devices h2 {
+      font-size: 18px;
+      margin-bottom: 16px;
+      opacity: 0.9;
+    }
+
+    .device-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .device-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 12px 16px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+
+    .device-item:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .device-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .device-name {
+      font-weight: 600;
+    }
+
+    .device-details {
+      font-size: 13px;
+      opacity: 0.7;
+    }
+
+    .button {
+      background: white;
+      color: #667eea;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .button:active {
+      transform: translateY(0);
+    }
+
+    .empty-state {
+      text-align: center;
+      opacity: 0.5;
+      padding: 32px;
+    }
+  </style>
+</head>
+<body>
+  <div class="titlebar">Portal Fusion</div>
+
+  <div class="main-container">
+    <div class="logo">PF</div>
+    <h1>Portal Fusion</h1>
+    <p class="subtitle">Seamless computing, unified</p>
+
+    <div class="status">
+      <div class="status-indicator"></div>
+      <span id="status-text">Discovering devices...</span>
+    </div>
+
+    <div class="devices">
+      <h2>Available Devices</h2>
+      <div class="device-list" id="device-list">
+        <div class="empty-state">No devices found yet</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Initialize app
+    const api = window.portalFusion;
+
+    // Get local device info
+    api.discovery.getLocalDevice().then(device => {
+      console.log('Local device:', device);
+    });
+
+    // Start discovery
+    api.discovery.start().then(() => {
+      document.getElementById('status-text').textContent = 'Discovery active';
+    });
+
+    // Listen for discovered devices
+    api.on('device:discovered', (device) => {
+      console.log('Device discovered:', device);
+      updateDeviceList();
+    });
+
+    api.on('device:connected', (device) => {
+      console.log('Device connected:', device);
+      updateDeviceList();
+    });
+
+    api.on('device:disconnected', (device) => {
+      console.log('Device disconnected:', device);
+      updateDeviceList();
+    });
+
+    // Update device list
+    async function updateDeviceList() {
+      const devices = await api.discovery.getDevices();
+      const deviceList = document.getElementById('device-list');
+
+      if (devices.length === 0) {
+        deviceList.innerHTML = '<div class="empty-state">No devices found yet</div>';
+        return;
+      }
+
+      deviceList.innerHTML = devices.map(device => `
+        <div class="device-item">
+          <div class="device-info">
+            <div class="device-name">${device.name}</div>
+            <div class="device-details">${device.platform} • ${device.ip}</div>
+          </div>
+          <button class="button" onclick="connectDevice('${device.id}')">Connect</button>
+        </div>
+      `).join('');
+    }
+
+    // Connect to device
+    async function connectDevice(deviceId) {
+      try {
+        const devices = await api.discovery.getDevices();
+        const device = devices.find(d => d.id === deviceId);
+
+        if (device) {
+          await api.connection.connect(device);
+          console.log('Connected to', device.name);
+        }
+      } catch (error) {
+        console.error('Failed to connect:', error);
+      }
+    }
+
+    // Refresh device list periodically
+    setInterval(updateDeviceList, 5000);
+
+    // Initial load
+    setTimeout(updateDeviceList, 1000);
+  </script>
+</body>
+</html>

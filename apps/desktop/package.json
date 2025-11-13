@@ -4,7 +4,7 @@
   "displayName": "Portal Fusion",
   "version": "1.0.0",
   "description": "Seamless computing, unified - Cross-platform PC to Mac application",
-  "main": "main.js",
+  "main": "dist/main/main.js",
   "author": {
     "name": "Your Name",
     "email": "contact@portalfusion.app",
@@ -14,14 +14,18 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "electron .",
-    "dev": "electron . --dev",
-    "build": "electron-builder",
-    "build:win": "electron-builder --win",
-    "build:mac": "electron-builder --mac",
-    "build:linux": "electron-builder --linux",
-    "dist": "electron-builder --publish=always",
-    "postinstall": "electron-builder install-app-deps"
+    "compile": "tsc",
+    "watch": "tsc --watch",
+    "start": "npm run compile && electron .",
+    "dev": "npm run compile && electron . --dev",
+    "build": "npm run compile && electron-builder",
+    "build:win": "npm run compile && electron-builder --win",
+    "build:mac": "npm run compile && electron-builder --mac",
+    "build:linux": "npm run compile && electron-builder --linux",
+    "dist": "npm run compile && electron-builder --publish=always",
+    "postinstall": "electron-builder install-app-deps",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit"
   },
   "build": {
     "appId": "com.portalfusion.app",
@@ -33,12 +37,11 @@
       "buildResources": "build"
     },
     "files": [
-      "main.js",
-      "preload.js",
-      "renderer/**/*",
+      "dist/**/*",
       "assets/**/*",
       "!**/*.ts",
-      "!**/*.map"
+      "!**/*.map",
+      "!src/**/*"
     ],
     "protocols": [
       {
@@ -164,15 +167,20 @@
     "afterSign": "scripts/notarize.js"
   },
   "dependencies": {
+    "@portal-fusion/protocol": "*",
+    "@portal-fusion/shared": "*",
+    "@portal-fusion/security": "*",
     "electron-updater": "^6.1.7",
     "electron-store": "^8.1.0",
     "electron-log": "^5.0.3"
   },
   "devDependencies": {
+    "@types/node": "^20.10.0",
     "electron": "^27.0.0",
     "electron-builder": "^24.9.1",
     "electron-notarize": "^1.2.2",
-    "@electron/rebuild": "^3.4.0"
+    "@electron/rebuild": "^3.4.0",
+    "typescript": "^5.3.0"
   },
   "keywords": [
     "portal-fusion",
