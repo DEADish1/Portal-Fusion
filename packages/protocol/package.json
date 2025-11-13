@@ -1,7 +1,7 @@
 {
-  "name": "@crossbridge/protocol",
+  "name": "@portal-fusion/protocol",
   "version": "1.0.0",
-  "description": "Communication protocol and networking for CrossBridge",
+  "description": "Communication protocol and networking for Portal Fusion",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
@@ -12,8 +12,8 @@
     "lint": "eslint src/**/*.ts"
   },
   "dependencies": {
-    "@crossbridge/shared": "workspace:*",
-    "@crossbridge/security": "workspace:*",
+    "@portal-fusion/shared": "workspace:*",
+    "@portal-fusion/security": "workspace:*",
     "bonjour-service": "^1.2.1",
     "simple-peer": "^9.11.1",
     "ws": "^8.16.0",

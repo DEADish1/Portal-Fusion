@@ -1,6 +1,6 @@
-# Contributing to CrossBridge
+# Contributing to Portal Fusion
 
-First off, thank you for considering contributing to CrossBridge! It's people like you that make CrossBridge such a great tool.
+First off, thank you for considering contributing to Portal Fusion! It's people like you that make Portal Fusion such a great tool.
 
 ## Code of Conduct
 
@@ -39,8 +39,8 @@ Before creating bug reports, please check existing issues as you might find out 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/crossbridge.git
-   cd crossbridge
+   git clone https://github.com/yourusername/portal-fusion.git
+   cd portal-fusion
    ```
 
 2. Install dependencies:
@@ -56,7 +56,7 @@ Before creating bug reports, please check existing issues as you might find out 
 ### Project Structure
 
 ```
-crossbridge/
+portal-fusion/
 ├── apps/           # Applications (desktop, web, server)
 ├── packages/       # Shared packages
 │   ├── shared/     # Types and utilities

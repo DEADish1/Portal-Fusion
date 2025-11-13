@@ -1,10 +1,19 @@
-# 🌉 CrossBridge
+# 🌀 Portal Fusion
 
-> Comprehensive cross-platform bridge system for seamless connectivity between MacBook Air and Windows tablet
+> Seamless computing, unified - Cross-platform bridge for PC and Mac
+
+<div align="center">
+  <img src="assets/portal-fusion-horizontal.svg" alt="Portal Fusion" width="400">
+  
+  [![CI](https://github.com/yourusername/portal-fusion/actions/workflows/ci.yml/badge.svg)](https://github.com/yourusername/portal-fusion/actions/workflows/ci.yml)
+  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+  
+  <strong>Transform your PC and Mac into a unified workspace</strong>
+</div>
 
 ## 🚀 Overview
 
-CrossBridge is a powerful, secure, and feature-rich application that creates a seamless bridge between your devices, enabling:
+Portal Fusion creates a seamless bridge between your devices, enabling:
 
 - 📋 **Universal Clipboard Sync** - Copy on one device, paste on another
 - 📁 **Instant File Transfer** - Drag, drop, and share files effortlessly
@@ -17,7 +26,7 @@ CrossBridge is a powerful, secure, and feature-rich application that creates a s
 ## 📦 Project Structure
 
 ```
-crossbridge/
+portal-fusion/
 ├── apps/
 │   ├── desktop/          # Electron app for MacOS & Windows
 │   ├── web/             # Next.js web dashboard
@@ -54,8 +63,8 @@ crossbridge/
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/crossbridge.git
-cd crossbridge
+git clone https://github.com/yourusername/portal-fusion.git
+cd portal-fusion
 
 # Install dependencies
 npm install
@@ -119,7 +128,7 @@ npm run electron:build
 
 ## 🔒 Security
 
-CrossBridge implements multiple layers of security:
+Portal Fusion implements multiple layers of security:
 
 1. **Device Authentication** - RSA key pairs for device identity
 2. **Secure Pairing** - QR code + PIN prevents MITM attacks
@@ -215,10 +224,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-- **Issues:** [GitHub Issues](https://github.com/yourusername/crossbridge/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/yourusername/crossbridge/discussions)
-- **Email:** support@crossbridge.dev
+- **Issues:** [GitHub Issues](https://github.com/yourusername/portal-fusion/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/yourusername/portal-fusion/discussions)
+- **Email:** support@portal-fusion.dev
 
 ---
 
-**CrossBridge** - Bridge the gap between your devices 🌉
+**Portal Fusion** - Where platforms converge, productivity emerges 🌉

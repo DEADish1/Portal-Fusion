@@ -5,8 +5,8 @@ import {
   Platform,
   DeviceStatus,
   DeviceCapabilities,
-  CrossBridgeEvents,
-} from '@crossbridge/shared';
+  Portal FusionEvents,
+} from '@portal-fusion/shared';
 import {
   generateDeviceId,
   generateKeyPair,
@@ -14,13 +14,13 @@ import {
   TypedEventEmitter,
   isLocalIP,
   normalizeIP,
-} from '@crossbridge/shared';
+} from '@portal-fusion/shared';
 import {
   MDNS_SERVICE_TYPE,
   SERVICE_NAME,
   DEFAULT_PORT,
   DISCOVERY_PORT,
-} from '@crossbridge/shared';
+} from '@portal-fusion/shared';
 import * as os from 'os';
 import * as crypto from 'crypto';
 
@@ -41,7 +41,7 @@ export interface DiscoveredDevice extends Device {
  * Device Discovery Service using mDNS/Bonjour
  * Handles automatic device detection and advertisement on local network
  */
-export class DeviceDiscoveryService extends TypedEventEmitter<CrossBridgeEvents> {
+export class DeviceDiscoveryService extends TypedEventEmitter<Portal FusionEvents> {
   private bonjour: Bonjour;
   private advertisement?: Service;
   private browser?: any;
@@ -79,7 +79,7 @@ export class DeviceDiscoveryService extends TypedEventEmitter<CrossBridgeEvents>
     const primaryInterface = networkInterfaces[0];
     
     // Store private key securely (in production, use keychain/credential store)
-    process.env.CROSSBRIDGE_PRIVATE_KEY = privateKey;
+    process.env.PORTAL_FUSION_PRIVATE_KEY = privateKey;
     
     return {
       id: generateDeviceId(),

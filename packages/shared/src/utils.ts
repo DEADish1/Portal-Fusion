@@ -319,20 +319,20 @@ export function validateDevice(device: any): device is Device {
 // Error Utilities
 // ============================================
 
-export class CrossBridgeError extends Error {
+export class Portal FusionError extends Error {
   code: string;
   details?: any;
   
   constructor(code: string, message: string, details?: any) {
     super(message);
-    this.name = 'CrossBridgeError';
+    this.name = 'Portal FusionError';
     this.code = code;
     this.details = details;
   }
 }
 
-export function createError(code: keyof typeof ERROR_CODES, message?: string, details?: any): CrossBridgeError {
-  return new CrossBridgeError(
+export function createError(code: keyof typeof ERROR_CODES, message?: string, details?: any): Portal FusionError {
+  return new Portal FusionError(
     ERROR_CODES[code],
     message || `Error: ${code}`,
     details
@@ -340,7 +340,7 @@ export function createError(code: keyof typeof ERROR_CODES, message?: string, de
 }
 
 export function isErrorCode(error: any, code: keyof typeof ERROR_CODES): boolean {
-  return error instanceof CrossBridgeError && error.code === ERROR_CODES[code];
+  return error instanceof Portal FusionError && error.code === ERROR_CODES[code];
 }
 
 // ============================================

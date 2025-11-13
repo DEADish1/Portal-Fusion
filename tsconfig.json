@@ -21,11 +21,11 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "paths": {
-      "@crossbridge/shared": ["packages/shared/src"],
-      "@crossbridge/protocol": ["packages/protocol/src"],
-      "@crossbridge/security": ["packages/security/src"],
-      "@crossbridge/native-bridge": ["packages/native-bridge/src"],
-      "@crossbridge/ui": ["packages/ui/src"]
+      "@portal-fusion/shared": ["packages/shared/src"],
+      "@portal-fusion/protocol": ["packages/protocol/src"],
+      "@portal-fusion/security": ["packages/security/src"],
+      "@portal-fusion/native-bridge": ["packages/native-bridge/src"],
+      "@portal-fusion/ui": ["packages/ui/src"]
     }
   },
   "exclude": ["node_modules", "dist", "build", ".next", "out"]

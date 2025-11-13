@@ -1,7 +1,7 @@
 {
-  "name": "crossbridge",
+  "name": "portal-fusion",
   "version": "1.0.0",
-  "description": "Comprehensive cross-platform bridge system for MacBook and Windows tablet",
+  "description": "Seamless computing, unified - Cross-platform bridge for PC and Mac",
   "private": true,
   "workspaces": [
     "apps/*",
@@ -16,10 +16,10 @@
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
-    "electron:dev": "turbo run electron:dev --filter=@crossbridge/desktop",
-    "electron:build": "turbo run electron:build --filter=@crossbridge/desktop",
-    "web:dev": "turbo run dev --filter=@crossbridge/web",
-    "server:dev": "turbo run dev --filter=@crossbridge/server"
+    "electron:dev": "turbo run electron:dev --filter=@portal-fusion/desktop",
+    "electron:build": "turbo run electron:build --filter=@portal-fusion/desktop",
+    "web:dev": "turbo run dev --filter=@portal-fusion/web",
+    "server:dev": "turbo run dev --filter=@portal-fusion/server"
   },
   "devDependencies": {
     "@types/node": "^20.10.0",

@@ -6,8 +6,8 @@ export const DEFAULT_PORT = 7777;
 export const DISCOVERY_PORT = 7778;
 export const WEBRTC_PORT = 7779;
 
-export const SERVICE_NAME = 'crossbridge';
-export const MDNS_SERVICE_TYPE = '_crossbridge._tcp';
+export const SERVICE_NAME = 'portal-fusion';
+export const MDNS_SERVICE_TYPE = '_portal-fusion._tcp';
 
 export const CONNECTION_TIMEOUT = 30000; // 30 seconds
 export const HEARTBEAT_INTERVAL = 5000; // 5 seconds
@@ -113,8 +113,8 @@ export const CACHE_SIZE = 100 * 1024 * 1024; // 100MB cache
 
 export const ANIMATION_DURATION = 200;
 export const TOAST_DURATION = 3000;
-export const THEME_STORAGE_KEY = 'crossbridge-theme';
-export const SETTINGS_STORAGE_KEY = 'crossbridge-settings';
+export const THEME_STORAGE_KEY = 'portal-fusion-theme';
+export const SETTINGS_STORAGE_KEY = 'portal-fusion-settings';
 
 // ============================================
 // Platform-Specific Paths
@@ -127,24 +127,24 @@ export const getPlatformPaths = () => {
   switch (platform) {
     case 'darwin':
       return {
-        config: `${home}/Library/Application Support/CrossBridge`,
-        cache: `${home}/Library/Caches/CrossBridge`,
-        logs: `${home}/Library/Logs/CrossBridge`,
-        data: `${home}/Library/Application Support/CrossBridge/data`,
+        config: `${home}/Library/Application Support/Portal Fusion`,
+        cache: `${home}/Library/Caches/Portal Fusion`,
+        logs: `${home}/Library/Logs/Portal Fusion`,
+        data: `${home}/Library/Application Support/Portal Fusion/data`,
       };
     case 'win32':
       return {
-        config: `${process.env.APPDATA}/CrossBridge`,
-        cache: `${process.env.LOCALAPPDATA}/CrossBridge/Cache`,
-        logs: `${process.env.LOCALAPPDATA}/CrossBridge/Logs`,
-        data: `${process.env.APPDATA}/CrossBridge/Data`,
+        config: `${process.env.APPDATA}/Portal Fusion`,
+        cache: `${process.env.LOCALAPPDATA}/Portal Fusion/Cache`,
+        logs: `${process.env.LOCALAPPDATA}/Portal Fusion/Logs`,
+        data: `${process.env.APPDATA}/Portal Fusion/Data`,
       };
     default: // Linux and others
       return {
-        config: `${home}/.config/crossbridge`,
-        cache: `${home}/.cache/crossbridge`,
-        logs: `${home}/.local/share/crossbridge/logs`,
-        data: `${home}/.local/share/crossbridge/data`,
+        config: `${home}/.config/portal-fusion`,
+        cache: `${home}/.cache/portal-fusion`,
+        logs: `${home}/.local/share/portal-fusion/logs`,
+        data: `${home}/.local/share/portal-fusion/data`,
       };
   }
 };

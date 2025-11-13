@@ -2,10 +2,10 @@ import * as QRCode from 'qrcode';
 import * as crypto from 'crypto';
 import {
   Device,
-  CrossBridgeEvents,
+  Portal FusionEvents,
   Message,
   MessageType,
-} from '@crossbridge/shared';
+} from '@portal-fusion/shared';
 import {
   generateId,
   generatePin,
@@ -14,8 +14,8 @@ import {
   createError,
   hashPassword,
   verifyPassword,
-} from '@crossbridge/shared';
-import { PIN_LENGTH, QR_CODE_SIZE } from '@crossbridge/shared';
+} from '@portal-fusion/shared';
+import { PIN_LENGTH, QR_CODE_SIZE } from '@portal-fusion/shared';
 
 export enum PairingState {
   IDLE = 'idle',
@@ -67,7 +67,7 @@ export interface PairingData {
  * Secure Pairing Service
  * Handles QR code generation and PIN verification for secure device pairing
  */
-export class PairingService extends TypedEventEmitter<CrossBridgeEvents> {
+export class PairingService extends TypedEventEmitter<Portal FusionEvents> {
   private sessions: Map<string, PairingSession>;
   private pairedDevices: Map<string, Device>;
   private options: Required<PairingOptions>;

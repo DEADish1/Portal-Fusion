@@ -420,7 +420,7 @@ export interface ApiResponse<T = any> {
 // Event Emitter Types
 // ============================================
 
-export interface CrossBridgeEvents {
+export interface Portal FusionEvents {
   // Connection events
   'device:discovered': (device: Device) => void;
   'device:connected': (device: Device) => void;
