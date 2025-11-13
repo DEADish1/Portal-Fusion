@@ -13,7 +13,7 @@
     "lint": "eslint src/**/*.ts"
   },
   "dependencies": {
-    "@portal-fusion/shared": "workspace:*",
+    "@portal-fusion/shared": "*",
     "react": "^18.2.0",
     "@radix-ui/themes": "^2.0.0",
     "clsx": "^2.0.0"
