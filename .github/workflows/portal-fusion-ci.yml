@@ -39,6 +39,7 @@ jobs:
   build:
     name: Build - ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+    if: github.event_name == 'release' || github.ref == 'refs/heads/main'
     continue-on-error: true
     strategy:
       fail-fast: false
