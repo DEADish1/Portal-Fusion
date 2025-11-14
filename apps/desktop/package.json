@@ -18,14 +18,17 @@
     "watch": "tsc --watch",
     "start": "npm run compile && electron .",
     "dev": "npm run compile && electron . --dev",
-    "build": "npm run compile && electron-builder",
-    "build:win": "npm run compile && electron-builder --win",
-    "build:mac": "npm run compile && electron-builder --mac",
-    "build:linux": "npm run compile && electron-builder --linux",
+    "build": "node scripts/build.js all",
+    "build:win": "node scripts/build.js win",
+    "build:mac": "node scripts/build.js mac",
+    "build:linux": "node scripts/build.js linux",
+    "build:quick": "npm run compile && electron-builder --dir",
     "dist": "npm run compile && electron-builder --publish=always",
     "postinstall": "electron-builder install-app-deps",
     "clean": "rm -rf dist",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "installer": "node scripts/build.js",
+    "installer:help": "node scripts/build.js --help"
   },
   "build": {
     "appId": "com.portalfusion.app",
@@ -59,6 +62,10 @@
       "target": [
         {
           "target": "dmg",
+          "arch": ["x64", "arm64"]
+        },
+        {
+          "target": "pkg",
           "arch": ["x64", "arm64"]
         },
         {
@@ -121,32 +128,75 @@
       "oneClick": false,
       "perMachine": false,
       "allowToChangeInstallationDirectory": true,
+      "allowElevation": true,
       "deleteAppDataOnUninstall": true,
       "menuCategory": true,
       "shortcutName": "Portal Fusion",
       "uninstallDisplayName": "Portal Fusion",
       "createDesktopShortcut": true,
-      "createStartMenuShortcut": true
+      "createStartMenuShortcut": true,
+      "runAfterFinish": true,
+      "installerIcon": "assets/icons/icon.ico",
+      "uninstallerIcon": "assets/icons/icon.ico",
+      "installerHeader": "build/installer-header.bmp",
+      "installerSidebar": "build/installer-sidebar.bmp",
+      "license": "build/license.txt",
+      "include": "build/installer.nsh",
+      "warningsAsErrors": false,
+      "displayLanguageSelector": true,
+      "language": "1033",
+      "multiLanguageInstaller": true
     },
     "dmg": {
       "backgroundColor": "#FFFFFF",
+      "background": "build/dmg-background.png",
+      "icon": "assets/icons/icon.icns",
+      "iconSize": 100,
       "window": {
-        "width": 540,
-        "height": 380
+        "width": 660,
+        "height": 500
       },
       "contents": [
         {
-          "x": 130,
-          "y": 220,
+          "x": 180,
+          "y": 280,
           "type": "file"
         },
         {
-          "x": 410,
-          "y": 220,
+          "x": 480,
+          "y": 280,
           "type": "link",
           "path": "/Applications"
         }
-      ]
+      ],
+      "title": "Install Portal Fusion",
+      "format": "ULFO",
+      "internetEnabled": false
+    },
+    "pkg": {
+      "license": "build/license.txt",
+      "background": {
+        "file": "build/pkg-background.png",
+        "alignment": "center",
+        "scaling": "proportional"
+      },
+      "welcome": "build/pkg-welcome.html",
+      "conclusion": "build/pkg-conclusion.html",
+      "installLocation": "/Applications",
+      "allowAnywhere": false,
+      "allowCurrentUserHome": false,
+      "allowRootDirectory": false,
+      "scripts": "build/pkg-scripts"
+    },
+    "msi": {
+      "oneClick": false,
+      "perMachine": true,
+      "runAfterFinish": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "menuCategory": true,
+      "shortcutName": "Portal Fusion",
+      "upgradeCode": "3F1B7C8D-9E2A-4B6C-8F1D-2E3A4B5C6D7E"
     },
     "appx": {
       "applicationId": "PortalFusion",
@@ -154,7 +204,8 @@
       "publisherDisplayName": "Portal Fusion Team",
       "backgroundColor": "#6366F1",
       "showNameOnTiles": true,
-      "languages": ["en-US"]
+      "languages": ["en-US"],
+      "addAutoLaunchExtension": false
     },
     "publish": [
       {
