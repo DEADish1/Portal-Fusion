@@ -9,7 +9,8 @@
     "dev": "tsc --watch",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint src/**/*.ts"
+    "lint": "eslint src/**/*.ts",
+    "test": "echo \"No tests yet\" && exit 0"
   },
   "dependencies": {
     "@portal-fusion/shared": "*",
