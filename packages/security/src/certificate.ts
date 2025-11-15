@@ -108,6 +108,13 @@ export class CertificateService {
   }
 
   /**
+   * Get certificate by ID
+   */
+  getCertificate(certId: string): Certificate | undefined {
+    return this.certificates.get(certId);
+  }
+
+  /**
    * Get certificate by device ID
    */
   getCertificateByDevice(deviceId: string): Certificate | undefined {
@@ -202,6 +209,13 @@ export class CertificateService {
    */
   listCertificates(): Certificate[] {
     return Array.from(this.certificates.values());
+  }
+
+  /**
+   * Get all certificates (alias for listCertificates)
+   */
+  getAllCertificates(): Certificate[] {
+    return this.listCertificates();
   }
 
   /**

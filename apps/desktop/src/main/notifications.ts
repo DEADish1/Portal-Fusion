@@ -35,7 +35,7 @@ export class NotificationManager {
         icon: options.icon ? options.icon : this.getDefaultIcon(),
         urgency: options.urgency || 'normal',
         silent: options.silent || false,
-        actions: options.actions || [],
+        actions: (options.actions || []) as any,
         timeoutType: options.urgency === 'critical' ? 'never' : 'default',
       });
 
@@ -159,7 +159,7 @@ export class NotificationManager {
       body: `Successfully received "${fileName}"`,
       urgency: 'normal',
       actions: [
-        { type: 'button', text: 'Show in Folder' },
+        { type: 'button' as const, text: 'Show in Folder' },
       ],
     });
   }

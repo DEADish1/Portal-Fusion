@@ -73,7 +73,7 @@ export class PermissionManager {
           defaultId: 0,
         });
 
-        if (result.response === 0) {
+        if (result === 0) {
           // Open System Preferences to Screen Recording
           await execAsync('open "x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture"');
         }
@@ -110,7 +110,7 @@ export class PermissionManager {
           defaultId: 0,
         });
 
-        if (result.response === 0) {
+        if (result === 0) {
           // Open System Preferences to Accessibility
           await execAsync('open "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility"');
         }

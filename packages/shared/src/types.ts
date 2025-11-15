@@ -420,7 +420,7 @@ export interface ApiResponse<T = any> {
 // Event Emitter Types
 // ============================================
 
-export interface Portal FusionEvents {
+export interface PortalFusionEvents {
   // Connection events
   'device:discovered': (device: Device) => void;
   'device:connected': (device: Device) => void;
@@ -444,6 +444,9 @@ export interface Portal FusionEvents {
   'error': (error: Error) => void;
   'warning': (warning: string) => void;
   'activity': (activity: Activity) => void;
+  
+  // Index signature to allow dynamic event names
+  [key: string]: (...args: any[]) => void;
 }
 
 // ============================================

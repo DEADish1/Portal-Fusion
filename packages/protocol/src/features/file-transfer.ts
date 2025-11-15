@@ -35,7 +35,7 @@ interface ActiveTransfer extends FileTransfer {
     path: string;
     handle?: fs.FileHandle;
   };
-  chunks: Map<number, Buffer>;
+  chunksMap: Map<number, Buffer>;
   timeout?: NodeJS.Timeout;
 }
 
@@ -109,14 +109,14 @@ export class FileTransferService extends TypedEventEmitter<PortalFusionEvents> {
       fileSize,
       mimeType: getMimeType(fileName),
       checksum,
-      chunks,
+      chunks: chunks,
       chunkSize: this.options.chunkSize,
       currentChunk: 0,
       progress: 0,
       speed: 0,
       status: FileTransferStatus.PENDING,
       startedAt: new Date(),
-      chunks: new Map(),
+      chunksMap: new Map(),
       file: { path: filePath },
     };
 
@@ -169,7 +169,7 @@ export class FileTransferService extends TypedEventEmitter<PortalFusionEvents> {
       speed: 0,
       status: FileTransferStatus.PENDING,
       startedAt: new Date(),
-      chunks: new Map(),
+      chunksMap: new Map(),
     };
 
     this.transfers.set(transferId, transfer);
@@ -212,7 +212,7 @@ export class FileTransferService extends TypedEventEmitter<PortalFusionEvents> {
     // Set timeout
     transfer.timeout = setTimeout(() => {
       this.cancelTransfer(transferId, 'Timeout');
-    }, this.options.timeout * transfer.chunks);
+    }, this.options.timeout * (transfer.chunksMap.size || 1));
 
     log.info(`File transfer accepted: ${transfer.fileName}`);
   }
@@ -346,16 +346,16 @@ export class FileTransferService extends TypedEventEmitter<PortalFusionEvents> {
       }
 
       // Store chunk
-      transfer.chunks.set(chunkIndex, chunkBuffer);
+      transfer.chunksMap.set(chunkIndex, chunkBuffer);
 
       // Update progress
       transfer.currentChunk = chunkIndex + 1;
-      transfer.progress = (transfer.chunks.size / transfer.chunks) * 100;
+      transfer.progress = (transfer.chunksMap.size / transfer.chunks) * 100;
 
       this.emit('file:transfer:progress', transfer);
 
       // Check if all chunks received
-      if (transfer.chunks.size === transfer.chunks) {
+      if (transfer.chunksMap.size === transfer.chunks) {
         await this.assembleFile(transferId);
       }
     } catch (error) {
@@ -378,7 +378,7 @@ export class FileTransferService extends TypedEventEmitter<PortalFusionEvents> {
       // Sort chunks and combine
       const sortedChunks: Buffer[] = [];
       for (let i = 0; i < transfer.chunks; i++) {
-        const chunk = transfer.chunks.get(i);
+        const chunk = transfer.chunksMap.get(i);
         if (!chunk) {
           throw new Error(`Missing chunk ${i}`);
         }

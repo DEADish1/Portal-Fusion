@@ -2,7 +2,7 @@ import * as QRCode from 'qrcode';
 import * as crypto from 'crypto';
 import {
   Device,
-  Portal FusionEvents,
+  PortalFusionEvents,
   Message,
   MessageType,
 } from '@portal-fusion/shared';
@@ -67,7 +67,7 @@ export interface PairingData {
  * Secure Pairing Service
  * Handles QR code generation and PIN verification for secure device pairing
  */
-export class PairingService extends TypedEventEmitter<Portal FusionEvents> {
+export class PairingService extends TypedEventEmitter<PortalFusionEvents> {
   private sessions: Map<string, PairingSession>;
   private pairedDevices: Map<string, Device>;
   private options: Required<PairingOptions>;

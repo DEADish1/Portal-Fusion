@@ -154,7 +154,7 @@ export class CameraSharingService extends TypedEventEmitter<PortalFusionEvents> 
 
     // Send stream start request
     const message = createMessage(
-      MessageType.VIDEO_STREAM,
+      MessageType.VIDEO_STREAM_START,
       {
         action: 'start',
         streamId: stream.id,
@@ -197,7 +197,7 @@ export class CameraSharingService extends TypedEventEmitter<PortalFusionEvents> 
 
     // Send stop message
     const message = createMessage(
-      MessageType.VIDEO_STREAM,
+      MessageType.VIDEO_STREAM_START,
       {
         action: 'stop',
         streamId,
@@ -289,7 +289,7 @@ export class CameraSharingService extends TypedEventEmitter<PortalFusionEvents> 
     const frameData = Buffer.from(''); // Placeholder
 
     const message = createMessage(
-      MessageType.VIDEO_FRAME,
+      MessageType.SCREEN_FRAME,
       {
         streamId: stream.id,
         frame: frameData.toString('base64'),
@@ -357,7 +357,7 @@ export class CameraSharingService extends TypedEventEmitter<PortalFusionEvents> 
 
     // Notify remote device
     const message = createMessage(
-      MessageType.VIDEO_STREAM,
+      MessageType.VIDEO_STREAM_START,
       {
         action: 'config-update',
         streamId,
@@ -422,7 +422,7 @@ export class CameraSharingService extends TypedEventEmitter<PortalFusionEvents> 
 
     // Send control command
     const message = createMessage(
-      MessageType.VIDEO_STREAM,
+      MessageType.VIDEO_STREAM_START,
       {
         action: 'camera-control',
         streamId,

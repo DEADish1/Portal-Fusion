@@ -9,6 +9,7 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "type-check": "tsc --noEmit",
+    "clean": "rimraf .next out",
     "test": "echo \"No tests yet\" && exit 0"
   },
   "dependencies": {

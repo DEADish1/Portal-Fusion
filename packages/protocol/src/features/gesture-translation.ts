@@ -182,16 +182,16 @@ export class GestureTranslationService extends TypedEventEmitter<PortalFusionEve
     }
 
     switch (event.type) {
-      case 'touchstart':
+      case 'start':
         this.handleTouchStart(event);
         break;
-      case 'touchmove':
+      case 'move':
         this.handleTouchMove(event);
         break;
-      case 'touchend':
+      case 'end':
         this.handleTouchEnd(event);
         break;
-      case 'touchcancel':
+      case 'cancel':
         this.handleTouchCancel(event);
         break;
     }
@@ -204,7 +204,7 @@ export class GestureTranslationService extends TypedEventEmitter<PortalFusionEve
     const now = Date.now();
 
     event.touches.forEach((touch) => {
-      this.touchStartPositions.set(touch.identifier, {
+      this.touchStartPositions.set(touch.id, {
         x: touch.x,
         y: touch.y,
         time: now,
@@ -242,7 +242,7 @@ export class GestureTranslationService extends TypedEventEmitter<PortalFusionEve
 
     // Find matching gesture
     const gesture = Array.from(this.activeGestures.values()).find(
-      (g) => !g.endTime && g.touches.length === event.changedTouches.length
+      (g) => !g.endTime && g.touches.length === event.touches.length
     );
 
     if (!gesture) {
@@ -264,7 +264,8 @@ export class GestureTranslationService extends TypedEventEmitter<PortalFusionEve
         if (recentTaps.length > 0) {
           gesture.type = 'double-tap';
         } else {
-          gesture.type = event.changedTouches.length === 2 ? 'two-finger-tap' : 'tap';
+          const touchCount = gesture.touches.length;
+          gesture.type = touchCount === 2 ? ('two-finger-tap' as GestureType) : ('tap' as GestureType);
         }
       } else if (duration >= this.LONG_PRESS_THRESHOLD) {
         gesture.type = 'long-press';
@@ -282,8 +283,8 @@ export class GestureTranslationService extends TypedEventEmitter<PortalFusionEve
    * Handle touch cancel
    */
   private handleTouchCancel(event: TCEvent): void {
-    event.changedTouches.forEach((touch) => {
-      this.touchStartPositions.delete(touch.identifier);
+    event.touches.forEach((touch) => {
+      this.touchStartPositions.delete(touch.id);
     });
 
     this.cleanupGestures();
@@ -296,7 +297,7 @@ export class GestureTranslationService extends TypedEventEmitter<PortalFusionEve
     if (event.touches.length !== 1) return;
 
     const touch = event.touches[0];
-    const startPos = this.touchStartPositions.get(touch.identifier);
+    const startPos = this.touchStartPositions.get(touch.id);
 
     if (!startPos) return;
 
@@ -331,8 +332,8 @@ export class GestureTranslationService extends TypedEventEmitter<PortalFusionEve
     if (event.touches.length !== 2) return;
 
     const [touch1, touch2] = event.touches;
-    const startPos1 = this.touchStartPositions.get(touch1.identifier);
-    const startPos2 = this.touchStartPositions.get(touch2.identifier);
+    const startPos1 = this.touchStartPositions.get(touch1.id);
+    const startPos2 = this.touchStartPositions.get(touch2.id);
 
     if (!startPos1 || !startPos2) return;
 
@@ -405,13 +406,19 @@ export class GestureTranslationService extends TypedEventEmitter<PortalFusionEve
    */
   private emitMouseClick(gesture: Gesture, button: number): void {
     const position = gesture.touches[0];
+    const buttonMap: Record<number, 'left' | 'right' | 'middle' | 'back' | 'forward'> = {
+      0: 'left',
+      1: 'middle',
+      2: 'right',
+      3: 'back',
+      4: 'forward',
+    };
 
     const mouseEvent: MSEvent = {
       type: 'click',
       x: position.x,
       y: position.y,
-      button,
-      timestamp: gesture.endTime || Date.now(),
+      button: buttonMap[button] || 'left',
     };
 
     this.emit('gesture:mouse-event', mouseEvent);
@@ -427,8 +434,11 @@ export class GestureTranslationService extends TypedEventEmitter<PortalFusionEve
       type: 'wheel',
       x: position.x,
       y: position.y,
-      deltaY: amount,
-      timestamp: gesture.endTime || Date.now(),
+      button: 'left',
+      wheel: {
+        deltaX: 0,
+        deltaY: amount,
+      },
     };
 
     this.emit('gesture:mouse-event', mouseEvent);
@@ -442,7 +452,13 @@ export class GestureTranslationService extends TypedEventEmitter<PortalFusionEve
       const keyboardEvent: KBEvent = {
         type: 'keydown',
         key,
-        timestamp: Date.now(),
+        code: key,
+        modifiers: {
+          ctrl: false,
+          alt: false,
+          shift: false,
+          meta: false,
+        },
       };
 
       this.emit('gesture:keyboard-event', keyboardEvent);
@@ -454,7 +470,13 @@ export class GestureTranslationService extends TypedEventEmitter<PortalFusionEve
         const keyboardEvent: KBEvent = {
           type: 'keyup',
           key,
-          timestamp: Date.now(),
+          code: key,
+          modifiers: {
+            ctrl: false,
+            alt: false,
+            shift: false,
+            meta: false,
+          },
         };
 
         this.emit('gesture:keyboard-event', keyboardEvent);

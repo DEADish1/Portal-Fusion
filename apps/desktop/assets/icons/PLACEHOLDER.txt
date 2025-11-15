@@ -1,0 +1,13 @@
+# Placeholder Icons
+
+These are placeholder icons. For production builds:
+
+1. Create a 1024x1024 PNG icon with transparent background
+2. Use electron-icon-builder or similar tools to generate:
+   - icon.icns (macOS)
+   - icon.ico (Windows)
+   - icon.png (Linux)
+
+See assets/icons/README.md for detailed instructions.
+
+The build will continue with default Electron icons if these files are missing.

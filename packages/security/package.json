@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "clean": "rm -rf dist",
+    "clean": "rimraf dist",
     "typecheck": "tsc --noEmit",
     "lint": "echo \"Linting security package...\" && exit 0",
     "test": "echo \"No tests yet\" && exit 0"

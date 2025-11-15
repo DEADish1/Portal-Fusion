@@ -14,7 +14,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "compile": "tsc",
+    "compile": "tsc && node scripts/post-compile.js",
     "watch": "tsc --watch",
     "start": "npm run compile && electron .",
     "dev": "npm run compile && electron . --dev",
@@ -25,7 +25,7 @@
     "build:quick": "npm run compile && electron-builder --dir",
     "dist": "npm run compile && electron-builder --publish=always",
     "postinstall": "electron-builder install-app-deps",
-    "clean": "rm -rf dist",
+    "clean": "rimraf dist",
     "typecheck": "tsc --noEmit",
     "lint": "echo \"Linting desktop app...\" && exit 0",
     "test": "echo \"No tests yet\" && exit 0",
@@ -46,12 +46,20 @@
       "assets/**/*",
       "!**/*.ts",
       "!**/*.map",
-      "!src/**/*"
+      "!src/**/*",
+      "node_modules/@portal-fusion/**/*",
+      "!node_modules/@portal-fusion/**/*.ts",
+      "!node_modules/@portal-fusion/**/*.map"
     ],
+    "asar": false,
+    "asarUnpack": [],
+    "nodeGypRebuild": false,
     "protocols": [
       {
         "name": "Portal Fusion Protocol",
-        "schemes": ["portalfusion"]
+        "schemes": [
+          "portalfusion"
+        ]
       }
     ],
     "mac": {
@@ -64,15 +72,24 @@
       "target": [
         {
           "target": "dmg",
-          "arch": ["x64", "arm64"]
+          "arch": [
+            "x64",
+            "arm64"
+          ]
         },
         {
           "target": "pkg",
-          "arch": ["x64", "arm64"]
+          "arch": [
+            "x64",
+            "arm64"
+          ]
         },
         {
           "target": "zip",
-          "arch": ["x64", "arm64"]
+          "arch": [
+            "x64",
+            "arm64"
+          ]
         }
       ],
       "bundleVersion": "100",
@@ -88,15 +105,24 @@
       "target": [
         {
           "target": "nsis",
-          "arch": ["x64", "ia32", "arm64"]
+          "arch": [
+            "x64",
+            "ia32",
+            "arm64"
+          ]
         },
         {
           "target": "msi",
-          "arch": ["x64"]
+          "arch": [
+            "x64"
+          ]
         },
         {
           "target": "appx",
-          "arch": ["x64", "arm64"]
+          "arch": [
+            "x64",
+            "arm64"
+          ]
         }
       ],
       "icon": "assets/icons/icon.ico",
@@ -206,7 +232,9 @@
       "publisherDisplayName": "Portal Fusion Team",
       "backgroundColor": "#6366F1",
       "showNameOnTiles": true,
-      "languages": ["en-US"],
+      "languages": [
+        "en-US"
+      ],
       "addAutoLaunchExtension": false
     },
     "publish": [
@@ -221,18 +249,21 @@
   },
   "dependencies": {
     "@portal-fusion/protocol": "*",
-    "@portal-fusion/shared": "*",
     "@portal-fusion/security": "*",
-    "electron-updater": "^6.1.7",
+    "@portal-fusion/shared": "*",
+    "electron-log": "^5.0.3",
     "electron-store": "^8.1.0",
-    "electron-log": "^5.0.3"
+    "electron-updater": "^6.1.7"
   },
   "devDependencies": {
-    "@types/node": "^20.10.0",
-    "electron": "^27.0.0",
-    "electron-builder": "^24.9.1",
-    "electron-notarize": "^1.2.2",
     "@electron/rebuild": "^3.4.0",
+    "@types/electron": "^1.4.38",
+    "@types/node": "^20.10.0",
+    "@types/pako": "^2.0.4",
+    "electron": "27.3.11",
+    "electron-builder": "^24.9.1",
+    "electron-icon-builder": "^2.0.1",
+    "electron-notarize": "^1.2.2",
     "typescript": "^5.3.0"
   },
   "keywords": [

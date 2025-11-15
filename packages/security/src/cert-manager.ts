@@ -58,9 +58,22 @@ export class CertificateManager extends TypedEventEmitter<PortalFusionEvents> {
     const device = {
       id: deviceId,
       name: deviceName,
+      type: 'unknown' as any,
+      platform: 'unknown' as any,
+      hostname: 'unknown',
+      ip: '0.0.0.0',
+      port: 0,
       publicKey: crypto.randomBytes(256).toString('base64'), // Placeholder
-      platform: 'unknown',
-      ipAddress: '0.0.0.0',
+      status: 'offline' as any,
+      capabilities: {} as any,
+      lastSeen: new Date(),
+      metadata: {
+        os: 'unknown',
+        version: '0.0.0',
+        arch: 'unknown',
+      },
+      paired: false,
+      trusted: false,
     };
 
     const cert = certificateService.generateCertificate(
@@ -298,11 +311,11 @@ export class CertificateManager extends TypedEventEmitter<PortalFusionEvents> {
       total: allCerts.length,
       revoked: this.revocationList.size,
       expiringSoon: allCerts.filter(
-        (cert) =>
+        (cert: Certificate) =>
           this.getDaysUntilExpiry(cert) <= this.rotationPolicy.warningDays &&
           this.getDaysUntilExpiry(cert) > 0
       ).length,
-      expired: allCerts.filter((cert) => this.getDaysUntilExpiry(cert) <= 0).length,
+      expired: allCerts.filter((cert: Certificate) => this.getDaysUntilExpiry(cert) <= 0).length,
     };
   }
 

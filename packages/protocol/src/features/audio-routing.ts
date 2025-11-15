@@ -118,7 +118,7 @@ export class AudioRoutingService extends TypedEventEmitter<PortalFusionEvents> {
 
     // Send stream start request
     const message = createMessage(
-      MessageType.AUDIO_STREAM,
+      MessageType.AUDIO_STREAM_START,
       {
         action: 'start',
         streamId: stream.id,
@@ -161,7 +161,7 @@ export class AudioRoutingService extends TypedEventEmitter<PortalFusionEvents> {
 
     // Send stop message
     const message = createMessage(
-      MessageType.AUDIO_STREAM,
+      MessageType.AUDIO_STREAM_STOP,
       {
         action: 'stop',
         streamId,
@@ -251,7 +251,7 @@ export class AudioRoutingService extends TypedEventEmitter<PortalFusionEvents> {
     const audioData = Buffer.from(''); // Placeholder
 
     const message = createMessage(
-      MessageType.AUDIO_PACKET,
+      MessageType.HEARTBEAT,
       {
         streamId: stream.id,
         data: audioData.toString('base64'),

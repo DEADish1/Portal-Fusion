@@ -201,7 +201,7 @@ class PortalFusionApp {
     });
   }
 
-  private getAppIcon(): string | nativeImage {
+  private getAppIcon(): string | Electron.NativeImage {
     if (process.platform === 'darwin') {
       return path.join(__dirname, '../../assets/icons/icon.icns');
     } else if (process.platform === 'win32') {
@@ -247,34 +247,32 @@ class PortalFusionApp {
     autoUpdater.on('update-available', (info) => {
       log.info('Update available:', info);
 
-      dialog.showMessageBox(this.mainWindow!, {
+      const result = dialog.showMessageBoxSync(this.mainWindow!, {
         type: 'info',
         title: 'Update Available',
         message: `A new version (${info.version}) is available. Would you like to download it?`,
         buttons: ['Download', 'Later'],
         defaultId: 0,
-      }).then((result) => {
-        if (result.response === 0) {
-          autoUpdater.downloadUpdate();
-        }
       });
+      if (result === 0) {
+        autoUpdater.downloadUpdate();
+      }
     });
 
     autoUpdater.on('update-downloaded', (info) => {
       log.info('Update downloaded:', info);
 
-      dialog.showMessageBox(this.mainWindow!, {
+      const result = dialog.showMessageBoxSync(this.mainWindow!, {
         type: 'info',
         title: 'Update Ready',
         message: 'Update downloaded. The application will restart to apply the update.',
         buttons: ['Restart Now', 'Later'],
         defaultId: 0,
-      }).then((result) => {
-        if (result.response === 0) {
-          this.isQuitting = true;
-          autoUpdater.quitAndInstall();
-        }
       });
+      if (result === 0) {
+        this.isQuitting = true;
+        autoUpdater.quitAndInstall();
+      }
     });
 
     autoUpdater.on('error', (error) => {

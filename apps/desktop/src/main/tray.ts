@@ -105,7 +105,7 @@ export class SystemTrayManager {
     this.tray.setContextMenu(contextMenu);
   }
 
-  private getSmallIcon(): nativeImage | undefined {
+  private getSmallIcon(): Electron.NativeImage | undefined {
     try {
       const iconPath = this.getTrayIcon();
       const icon = nativeImage.createFromPath(iconPath);

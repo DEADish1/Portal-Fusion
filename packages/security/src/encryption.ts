@@ -42,7 +42,7 @@ export class EncryptionService {
 
       const dataBuffer = typeof data === 'string' ? Buffer.from(data, 'utf8') : data;
       const encrypted = Buffer.concat([cipher.update(dataBuffer), cipher.final()]);
-      const tag = cipher.getAuthTag();
+      const tag = (cipher as any).getAuthTag();
 
       return { encrypted, iv, tag };
     } catch (error) {
@@ -56,7 +56,7 @@ export class EncryptionService {
   decrypt(encrypted: Buffer, key: Buffer, iv: Buffer, tag: Buffer): Buffer {
     try {
       const decipher = crypto.createDecipheriv(this.algorithm, key, iv);
-      decipher.setAuthTag(tag);
+      (decipher as any).setAuthTag(tag);
 
       return Buffer.concat([decipher.update(encrypted), decipher.final()]);
     } catch (error) {

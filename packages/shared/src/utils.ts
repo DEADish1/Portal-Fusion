@@ -319,20 +319,20 @@ export function validateDevice(device: any): device is Device {
 // Error Utilities
 // ============================================
 
-export class Portal FusionError extends Error {
+export class PortalFusionError extends Error {
   code: string;
   details?: any;
   
   constructor(code: string, message: string, details?: any) {
     super(message);
-    this.name = 'Portal FusionError';
+    this.name = 'PortalFusionError';
     this.code = code;
     this.details = details;
   }
 }
 
-export function createError(code: keyof typeof ERROR_CODES, message?: string, details?: any): Portal FusionError {
-  return new Portal FusionError(
+export function createError(code: keyof typeof ERROR_CODES, message?: string, details?: any): PortalFusionError {
+  return new PortalFusionError(
     ERROR_CODES[code],
     message || `Error: ${code}`,
     details
@@ -340,7 +340,7 @@ export function createError(code: keyof typeof ERROR_CODES, message?: string, de
 }
 
 export function isErrorCode(error: any, code: keyof typeof ERROR_CODES): boolean {
-  return error instanceof Portal FusionError && error.code === ERROR_CODES[code];
+  return error instanceof PortalFusionError && error.code === ERROR_CODES[code];
 }
 
 // ============================================

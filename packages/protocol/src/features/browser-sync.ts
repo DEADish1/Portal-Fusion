@@ -157,7 +157,7 @@ export class BrowserSyncService extends TypedEventEmitter<PortalFusionEvents> {
     for (const connection of connections) {
       try {
         const message = createMessage(
-          MessageType.BROWSER_SYNC,
+          MessageType.BROWSER_TAB_SYNC,
           {
             action: 'tabs-sync',
             session: this.localSession,
@@ -192,7 +192,7 @@ export class BrowserSyncService extends TypedEventEmitter<PortalFusionEvents> {
     }
 
     const message = createMessage(
-      MessageType.BROWSER_SYNC,
+      MessageType.BROWSER_TAB_SYNC,
       {
         action: 'send-tab',
         tab,
@@ -290,7 +290,7 @@ export class BrowserSyncService extends TypedEventEmitter<PortalFusionEvents> {
     for (const connection of connections) {
       try {
         const message = createMessage(
-          MessageType.BROWSER_SYNC,
+          MessageType.BROWSER_TAB_SYNC,
           {
             action: 'history-sync',
             history: historyEntries,
@@ -331,7 +331,7 @@ export class BrowserSyncService extends TypedEventEmitter<PortalFusionEvents> {
     for (const connection of connections) {
       try {
         const message = createMessage(
-          MessageType.BROWSER_SYNC,
+          MessageType.BROWSER_TAB_SYNC,
           {
             action: 'bookmarks-sync',
             bookmarks: bookmarksList,

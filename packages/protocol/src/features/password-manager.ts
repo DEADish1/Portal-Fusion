@@ -239,12 +239,10 @@ export class PasswordManagerService extends TypedEventEmitter<PortalFusionEvents
 
     // Decrypt password
     const decrypted = encryptionService.decrypt(
-      {
-        encrypted: Buffer.from(entry.encryptedPassword, 'base64'),
-        iv: Buffer.from(entry.iv, 'base64'),
-        tag: Buffer.from(entry.tag, 'base64'),
-      },
-      this.vault.encryptionKey
+      Buffer.from(entry.encryptedPassword, 'base64'),
+      this.vault.encryptionKey,
+      Buffer.from(entry.iv, 'base64'),
+      Buffer.from(entry.tag, 'base64')
     );
 
     // Update last used
@@ -444,7 +442,7 @@ export class PasswordManagerService extends TypedEventEmitter<PortalFusionEvents
     for (const connection of connections) {
       try {
         const message = createMessage(
-          MessageType.PASSWORD_SYNC,
+          MessageType.BROWSER_PASSWORD_SYNC,
           {
             action: 'sync',
             entries,
@@ -528,12 +526,10 @@ export class PasswordManagerService extends TypedEventEmitter<PortalFusionEvents
     const { encrypted, iv, tag } = JSON.parse(encryptedData);
 
     const decrypted = encryptionService.decrypt(
-      {
-        encrypted: Buffer.from(encrypted, 'base64'),
-        iv: Buffer.from(iv, 'base64'),
-        tag: Buffer.from(tag, 'base64'),
-      },
-      this.vault.encryptionKey
+      Buffer.from(encrypted, 'base64'),
+      this.vault.encryptionKey,
+      Buffer.from(iv, 'base64'),
+      Buffer.from(tag, 'base64')
     );
 
     const vaultData = JSON.parse(decrypted.toString('utf8'));

@@ -40,6 +40,10 @@ coverage/
 # Turborepo
 .turbo/
 
+# TypeScript
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
 # Electron
 electron-builder.yml
 dist_electron/

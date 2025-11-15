@@ -148,8 +148,10 @@ export class E2EEncryptionManager extends TypedEventEmitter<PortalFusionEvents> 
 
     // Decrypt with session key
     const decrypted = encryptionService.decrypt(
-      { encrypted, iv, tag },
-      session.sessionKey
+      encrypted,
+      session.sessionKey,
+      iv,
+      tag
     );
 
     return decrypted;

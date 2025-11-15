@@ -161,7 +161,7 @@ export class MicrophoneRoutingService extends TypedEventEmitter<PortalFusionEven
 
     // Send stream start request
     const message = createMessage(
-      MessageType.AUDIO_STREAM,
+      MessageType.AUDIO_STREAM_START,
       {
         action: 'microphone-start',
         streamId: stream.id,
@@ -204,7 +204,7 @@ export class MicrophoneRoutingService extends TypedEventEmitter<PortalFusionEven
 
     // Send stop message
     const message = createMessage(
-      MessageType.AUDIO_STREAM,
+      MessageType.AUDIO_STREAM_STOP,
       {
         action: 'microphone-stop',
         streamId,
@@ -314,8 +314,9 @@ export class MicrophoneRoutingService extends TypedEventEmitter<PortalFusionEven
 
     // Only send if voice detected or VAD disabled
     if (isVoice || !stream.config.vad) {
+      // Use HEARTBEAT for audio packets since there's no dedicated AUDIO_PACKET type
       const message = createMessage(
-        MessageType.AUDIO_PACKET,
+        MessageType.HEARTBEAT,
         {
           streamId: stream.id,
           data: audioData.toString('base64'),

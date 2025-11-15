@@ -245,7 +245,7 @@ export class SecurityScanner extends TypedEventEmitter<PortalFusionEvents> {
       // Log to audit
       await auditLogger.log(
         result.safe ? 'info' : 'warning',
-        'security',
+        'security-event',
         'security:scan',
         true,
         {

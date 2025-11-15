@@ -1,11 +1,11 @@
-import { Bonjour, Service, RemoteService } from 'bonjour-service';
+import { Bonjour, Service } from 'bonjour-service';
 import {
   Device,
   DeviceType,
   Platform,
   DeviceStatus,
   DeviceCapabilities,
-  Portal FusionEvents,
+  PortalFusionEvents,
 } from '@portal-fusion/shared';
 import {
   generateDeviceId,
@@ -33,7 +33,7 @@ export interface DiscoveryOptions {
 }
 
 export interface DiscoveredDevice extends Device {
-  service: RemoteService;
+  service: Service;
   lastHeartbeat: Date;
 }
 
@@ -41,7 +41,7 @@ export interface DiscoveredDevice extends Device {
  * Device Discovery Service using mDNS/Bonjour
  * Handles automatic device detection and advertisement on local network
  */
-export class DeviceDiscoveryService extends TypedEventEmitter<Portal FusionEvents> {
+export class DeviceDiscoveryService extends TypedEventEmitter<PortalFusionEvents> {
   private bonjour: Bonjour;
   private advertisement?: Service;
   private browser?: any;
@@ -311,11 +311,11 @@ export class DeviceDiscoveryService extends TypedEventEmitter<Portal FusionEvent
   private startBrowsing(): void {
     this.browser = this.bonjour.find({ type: MDNS_SERVICE_TYPE });
     
-    this.browser.on('up', (service: RemoteService) => {
+    this.browser.on('up', (service: Service) => {
       this.handleDeviceFound(service);
     });
     
-    this.browser.on('down', (service: RemoteService) => {
+    this.browser.on('down', (service: Service) => {
       this.handleDeviceLost(service);
     });
   }
@@ -323,7 +323,7 @@ export class DeviceDiscoveryService extends TypedEventEmitter<Portal FusionEvent
   /**
    * Handle discovered device
    */
-  private handleDeviceFound(service: RemoteService): void {
+  private handleDeviceFound(service: Service): void {
     try {
       // Parse device information from service
       const txt = service.txt as any;
@@ -384,7 +384,7 @@ export class DeviceDiscoveryService extends TypedEventEmitter<Portal FusionEvent
   /**
    * Handle lost device
    */
-  private handleDeviceLost(service: RemoteService): void {
+  private handleDeviceLost(service: Service): void {
     try {
       const txt = service.txt as any;
       const deviceId = txt.id;
@@ -450,7 +450,7 @@ export class DeviceDiscoveryService extends TypedEventEmitter<Portal FusionEvent
   async stop(): Promise<void> {
     // Stop advertising
     if (this.advertisement) {
-      this.advertisement.stop();
+      this.advertisement.stop!();
       this.advertisement = undefined;
     }
     
@@ -513,7 +513,8 @@ export class DeviceDiscoveryService extends TypedEventEmitter<Portal FusionEvent
     
     // Restart advertising with new information
     if (this.advertisement) {
-      this.advertisement.stop();
+      this.advertisement.stop!();
+      this.advertisement = undefined;
       this.startAdvertising();
     }
   }
